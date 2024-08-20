@@ -8,7 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('title','contend_view','status','published_date','created_date',)
     list_filter = ('status',)
-    ordering = ['-created_date']
+    # ordering = ['-created_date']
     search_fields = ('title','contend')
 admin.site.register(Post,PostAdmin)
 
