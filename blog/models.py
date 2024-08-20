@@ -17,5 +17,5 @@ class Post(models.Model):
         ordering = ['-created_date']
 
     def __str__(self):
-        return "{} - {}".format(self.title, self.id)
+        return "{} ".format(self.title,)
     
