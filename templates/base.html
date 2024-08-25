@@ -62,10 +62,10 @@
                     <ul class="nav-menu">
                       <li><a href="{% url 'my_web:index' %}">Home</a></li>
                       <li><a href="{% url 'my_web:about' %}">About</a></li>
-                      <li class="menu-has-children"><a href="">Blog</a>
+                      <li class="menu-has-children"><a href="{% url 'blog:blog' %}">Blog</a>
                         <ul>
                           <li><a href="{% url 'blog:blog' %}">Blog Home</a></li>
-                          <li><a href="{% url 'blog:single' %}">Blog Single</a></li>
+						  
                         </ul>
                       </li>					          					          		          
                       <li><a href="{% url 'my_web:contact' %}">Contact</a></li>
