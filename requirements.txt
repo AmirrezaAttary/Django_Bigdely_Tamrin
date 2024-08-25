@@ -2,3 +2,4 @@ asgiref
 Django>3.2,<3.3
 pytz
 sqlparse
+pillow
