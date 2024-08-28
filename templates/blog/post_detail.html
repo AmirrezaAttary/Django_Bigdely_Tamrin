@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+
+    <div class="navigation">
+        {% if previous_post %}
+            <a href="{% url 'blog:post_detail' previous_post.id %}">Previous: {{ previous_post.title }}</a>
+        {% endif %}
+
+        {% if next_post %}
+            <a href="{% url 'blog:post_detail' next_post.id %}">Next: {{ next_post.title }}</a>
+        {% endif %}
+    </div>
+
+</body>
+</html>
