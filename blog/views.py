@@ -47,8 +47,8 @@ def test(request):
 def blog_search(request):
     posts = Post.objects.filter(published_date__lte =timezone.now(),status = 1)
     if request.method == 'GET':
-        # print(request.GET.get('s'))
-        posts = posts.filter(contend__contains = request.GET.get('s'))
+        if s := request.GET.get('s'):
+            posts = posts.filter(contend__contains = s)
     
     context = {'posts': posts}
     return render(request,'blog/blog-home.html',context)
