@@ -42,3 +42,13 @@ def blog_single(request,**kwargs):
 def test(request):
 
     return render(request,'blog/test.html')
+
+
+def blog_search(request):
+    posts = Post.objects.filter(published_date__lte =timezone.now(),status = 1)
+    if request.method == 'GET':
+        # print(request.GET.get('s'))
+        posts = posts.filter(contend__contains = request.GET.get('s'))
+    
+    context = {'posts': posts}
+    return render(request,'blog/blog-home.html',context)
