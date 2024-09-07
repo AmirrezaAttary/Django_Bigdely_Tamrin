@@ -31,3 +31,4 @@ def postcategory():
         cat_dict[name]=posts.filter(category=name).count()
     return {'categoryies':cat_dict}
         
+        
