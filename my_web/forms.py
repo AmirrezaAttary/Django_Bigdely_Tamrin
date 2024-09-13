@@ -12,7 +12,8 @@ class ContatctForm(forms.ModelForm):
 
     class Meta:
         model = Contatct
-        fields = '__all__'
+        fields = ['message','email'] 
+
         
         
 class NewsletterForm(forms.ModelForm):

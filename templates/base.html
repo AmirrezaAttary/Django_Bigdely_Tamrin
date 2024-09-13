@@ -17,7 +17,19 @@
     <meta charset="UTF-8">
     <!-- Site Title -->
     <title>Travel</title>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Check for error messages from Django
+            {% if messages %}
+                // Loop through the messages
+                {% for message in messages %}
+                    // Display the popup using JavaScript
+                    alert("{{ message }}");
+                {% endfor %}
+            {% endif %}
+        });
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
         <!--
         CSS
