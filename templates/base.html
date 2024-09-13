@@ -17,19 +17,7 @@
     <meta charset="UTF-8">
     <!-- Site Title -->
     <title>Travel</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Check for error messages from Django
-            {% if messages %}
-                // Loop through the messages
-                {% for message in messages %}
-                    // Display the popup using JavaScript
-                    alert("{{ message }}");
-                {% endfor %}
-            {% endif %}
-        });
-    </script>
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
         <!--
         CSS
@@ -81,6 +69,29 @@
                   </nav><!-- #nav-menu-container -->					      		  
                 </div>
             </div>
+			{% if messages %}
+			{% for message in messages %}
+				<div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}" style="text-align: center;margin: 10px;padding: 10px;margin-left: 70px;margin-right: 70px;">{{ message|safe }}</div>
+			{% endfor %}
+			{% endif %}
+
+			{% if form.errors %}
+			<div class="alert alert-error">
+				<h4>Please fix the following errors</h4>
+				<ul>
+				{% for field in form %}
+					{% if field.errors %}
+					{% for error in field.errors %}
+						<li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+					{% endfor %}
+					{% endif %}
+				{% endfor %}
+				</ul>
+				{% if form.non_field_errors %}
+				{{ form.non_field_errors }}
+				{% endif %}
+			</div>
+			{% endif %}	
         </header><!-- #header -->
 
         {% block content %}

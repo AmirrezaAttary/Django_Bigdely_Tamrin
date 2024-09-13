@@ -4,7 +4,7 @@ from django.db import models
 class Contatct(models.Model):
     name = models.CharField(max_length=255, default='anonymous')
     email = models.EmailField()
-    subject = models.CharField(max_length=255, default='No subject provided')
+    subject = models.CharField(max_length=255, default='')
     message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
