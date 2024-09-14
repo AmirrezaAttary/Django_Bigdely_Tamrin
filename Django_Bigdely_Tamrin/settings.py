@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django-extensions',
     'my_web.apps.MyWebConfig',
     'blog.apps.BlogConfig',
     
