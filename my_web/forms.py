@@ -12,7 +12,14 @@ class ContatctForm(forms.ModelForm):
 
     class Meta:
         model = Contatct
-        fields = ['message','email'] 
+        fields = ['message','email','subject'] 
+        
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.name = 'anonymous'  # Set name to anonymous
+        if commit:
+                instance.save()
+        return instance
 
         
         

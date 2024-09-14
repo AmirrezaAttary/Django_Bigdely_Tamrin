@@ -11,7 +11,7 @@ def about_view(request):
 
 def contact_view(request):
     if request.method == 'POST':
-        form = ContatctForm(request.POST)
+        form = ContatctForm(request.POST) 
         if form.is_valid():
             form.save()  
             messages.add_message(request, messages.SUCCESS, 'Your Ticket Submited Successfully')
