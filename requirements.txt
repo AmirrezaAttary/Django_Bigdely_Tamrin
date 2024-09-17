@@ -5,3 +5,4 @@ sqlparse
 pillow
 django-extensions
 django-robots
+django-debug-toolbar
