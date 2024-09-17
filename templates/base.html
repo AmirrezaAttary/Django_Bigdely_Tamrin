@@ -142,6 +142,7 @@
 								<div>
 									<form action="{% url 'my_web:newsletter' %}" method="post" class="subscription relative">
 										{% csrf_token %}
+										{{form.captcha}}
 										<div class="input-group d-flex flex-row">
 											<input name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
 											<button class="btn bb-btn" type="submit"><span class="lnr lnr-location"></span></button>		
