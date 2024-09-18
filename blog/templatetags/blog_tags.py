@@ -1,5 +1,8 @@
 from django import template
-from blog.models import Post,Category
+from blog.models import Post,Category,Comment
+from django.shortcuts import render,get_object_or_404
+from django.utils import timezone
+
 
 register = template.Library()
 
@@ -12,6 +15,10 @@ def func():
 def func():
     posts = Post.objects.filter(status = 1)
     return posts
+
+@register.inclusion_tag("comments_count")
+def fuuction(pk):
+    return Comment.objects.filter(post=pk,approved=True).count()
 
 @register.filter
 def snippet(value,arg = 20):
@@ -30,5 +37,4 @@ def postcategory():
     for name in categoryies:
         cat_dict[name]=posts.filter(category=name).count()
     return {'categoryies':cat_dict}
-        
-        
+

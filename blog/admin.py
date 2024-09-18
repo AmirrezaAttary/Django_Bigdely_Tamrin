@@ -20,7 +20,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name','post','approved','created_date')
     list_filter = ('post','approved')
     search_fields = ('name','post')
-
+    
 admin.site.register(Category)
 admin.site.register(Post,PostAdmin)
 admin.site.register(Comment,CommentAdmin)
