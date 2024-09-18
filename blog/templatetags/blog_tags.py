@@ -16,9 +16,9 @@ def func():
     posts = Post.objects.filter(status = 1)
     return posts
 
-@register.inclusion_tag("comments_count")
-def fuuction(pk):
-    return Comment.objects.filter(post=pk,approved=True).count()
+@register.simple_tag(name="comments_count")
+def fuuction(post):
+    return Comment.objects.filter(post=post,approved=True).count()
 
 @register.filter
 def snippet(value,arg = 20):

@@ -24,10 +24,10 @@ def blog_view(request,**kwargs):
     }
     return render(request,'blog/blog-home.html',context)
 
-def blog_single(request,**kwargs):
+def blog_single(request,pid):
     posts = Post.objects.filter(published_date__lte =timezone.now(),status = 1)
-    post = get_object_or_404(posts, pk=kwargs.get('post_id'))
-    comments = Comment.objects.filter(post=post.id,approved=True).order_by('-created_date')
+    post = get_object_or_404(posts, pk=pid)
+    comments = Comment.objects.filter(post=post.id,approved=True)
     post.contend_view += 1
     post.save()
     
