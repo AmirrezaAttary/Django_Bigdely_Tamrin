@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     
     'my_web.apps.MyWebConfig',
     'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig',
     
 ]
 
