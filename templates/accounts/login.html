@@ -1,15 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>CodePen - Glassmorphism Login</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 </head>
 <body>
-    {% if request.user.is_authenticated %}
-    <p>user is authenticated as {{request.user.username}}</p>
-    {% else %}
-    <p>user is not authenticated</p>
-    {% endif %}
+<!-- partial:index.partial.html -->
+<body>
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+                <h1 class="opacity">LOGIN</h1>
+                <form method="post" action="{% url 'accounts:login' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="USERNAME" required autofocus />
+                    <input type="password" name="password" placeholder="PASSWORD" required />
+                    <button class="opacity" type="submit">SUBMIT</button>
+                </form>
+                <div class="register-forget opacity">
+                    <a href="">REGISTER</a>
+                    <a href="">FORGOT PASSWORD</a>
+                </div>
+            </div>
+            <div class="circle circle-two"></div>
+        </div>
+        <div class="theme-btn-container"></div>
+    </section>
+</body>
+<!-- partial -->
+  <script  src="{% static 'js/login.js' %}"></script>
+
 </body>
 </html>
+
