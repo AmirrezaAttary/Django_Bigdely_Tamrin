@@ -4,7 +4,11 @@ from blog.models import Post,Comment
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+
+@login_required
 def blog_view(request,**kwargs):
     posts = Post.objects.filter(published_date__lte =timezone.now(),status = 1)
     if kwargs.get('cat_name'):
