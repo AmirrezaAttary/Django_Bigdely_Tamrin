@@ -1,14 +1,17 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.utils import timezone
 from blog.models import Post,Comment
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from blog.forms import CommentForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 # Create your views here.
 
-@login_required
+
 def blog_view(request,**kwargs):
     posts = Post.objects.filter(published_date__lte =timezone.now(),status = 1)
     if kwargs.get('cat_name'):
@@ -40,33 +43,36 @@ def blog_single(request,pid):
         
     posts = Post.objects.filter(published_date__lte =timezone.now(),status = 1)
     post = get_object_or_404(posts, pk=pid)
-    comments = Comment.objects.filter(post=post.id,approved=True)
-    form = CommentForm()
-    post.contend_view += 1
-    post.save()
-    
-    current_index = None
-    for index, p in enumerate(posts):
-        if p.id == post.id:
-            current_index = index
-            break
+    if not post.login_require: 
+        comments = Comment.objects.filter(post=post.id,approved=True)
+        form = CommentForm()
+        post.contend_view += 1
+        post.save()
+        
+        current_index = None
+        for index, p in enumerate(posts):
+            if p.id == post.id:
+                current_index = index
+                break
 
-    previous_post = None
-    next_post = None
-    if current_index is not None:
-        if current_index > 0:
-            previous_post = posts[current_index - 1]
-        if current_index < len(posts) - 1:
-            next_post = posts[current_index + 1]
+        previous_post = None
+        next_post = None
+        if current_index is not None:
+            if current_index > 0:
+                previous_post = posts[current_index - 1]
+            if current_index < len(posts) - 1:
+                next_post = posts[current_index + 1]
 
-    context = {
-        'post': post,
-        'previous_post': previous_post,
-        'next_post': next_post,
-        'comments': comments,
-        'form' : form,
-    }
-    return render(request,'blog/blog-single.html', context)
+        context = {
+            'post': post,
+            'previous_post': previous_post,
+            'next_post': next_post,
+            'comments': comments,
+            'form' : form,
+        }
+        return render(request,'blog/blog-single.html', context)
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 
 def test(request):
 
