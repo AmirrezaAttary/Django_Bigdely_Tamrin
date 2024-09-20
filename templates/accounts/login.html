@@ -20,10 +20,10 @@
                     {% csrf_token %}
                     <input type="text" name="username" placeholder="USERNAME" required autofocus />
                     <input type="password" name="password" placeholder="PASSWORD" required />
-                    <button class="opacity" type="submit">SUBMIT</button>
+                    <button class="" type="submit">LOGIN</button>
                 </form>
-                <div class="register-forget opacity">
-                    <a href="">REGISTER</a>
+                <div class="register-forget ">
+                    <a href="{% url 'accounts:signup' %}">REGISTER</a>
                     <a href="">FORGOT PASSWORD</a>
                 </div>
             </div>

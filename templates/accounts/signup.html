@@ -1,11 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>CodePen - Glassmorphism Login</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 </head>
 <body>
-    
+<!-- partial:index.partial.html -->
+<body>
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+                <h1 class="opacity">SIGNUP</h1>
+                <form method="post" action="{% url 'accounts:signup' %}">
+                    {% csrf_token %}
+                    
+                    <input type="text" name="username" placeholder="USERNAME" required autofocus />
+                    <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+                    <input type="password" name="password1" placeholder="PASSWORD" required />
+                    <ul>
+                        <li>Your password can’t be too similar to your other personal information.</li>
+                        <li>Your password must contain at least 8 characters.</li>
+                        <li>Your password can’t be a</li>
+                        <li>Your password can’t be entirely numeric.</li>
+                    </ul>
+                    <input type="password" name="password2" placeholder="PASSWORDCONFIRMATION" required />
+                    <span class="helptext">Enter the same password as before, for verification.</span>
+                    <br><br><br>
+                    <button class="" type="submit">SIGNUP</button>
+                </form>
+                <center>
+                    <div class="">
+                        <a href="{% url 'accounts:login' %}">LOGIN</a>
+                    </div>
+                </center>
+            </div>
+            <div class="circle circle-two"></div>
+        </div>
+        <div class="theme-btn-container"></div>
+    </section>
+</body>
+<!-- partial -->
+  <script  src="{% static 'js/login.js' %}"></script>
+
 </body>
 </html>
