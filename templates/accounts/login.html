@@ -18,8 +18,9 @@
                 <h1 class="opacity">LOGIN</h1>
                 <form method="post" action="{% url 'accounts:login' %}">
                     {% csrf_token %}
-                    <input type="text" name="username" placeholder="USERNAME" required autofocus />
-                    <input type="password" name="password" placeholder="PASSWORD" required />
+                    {{form.as_p}}
+                    <!-- <input type="text" name="username" placeholder="USERNAME" required autofocus />
+                    <input type="password" name="password" placeholder="PASSWORD" required /> -->
                     <button class="" type="submit">LOGIN</button>
                 </form>
                 <div class="register-forget ">

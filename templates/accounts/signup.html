@@ -10,17 +10,25 @@
 <body>
 <!-- partial:index.partial.html -->
 <body>
+    {% if messages %}  
+    <ul>   
+        {% for message in messages %}  
+            <li>{{ message }}</li>  
+            {% endfor %}  
+    </ul>   
+{% endif %}  
     <section class="container">
         <div class="login-container">
             <div class="circle circle-one"></div>
             <div class="form-container">
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
                 <h1 class="opacity">SIGNUP</h1>
-                <form method="post" action="{% url 'accounts:signup' %}">
+                <form method="post" action="">
                     {% csrf_token %}
                     
                     <input type="text" name="username" placeholder="USERNAME" required autofocus />
                     <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+                    <input type="email" name="email" placeholder="EMAIL" required />
                     <input type="password" name="password1" placeholder="PASSWORD" required />
                     <ul>
                         <li>Your password can’t be too similar to your other personal information.</li>
