@@ -197,3 +197,12 @@ INTERNAL_IPS = [
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+# EMAIL
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_POST = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'personal.info.blog@gmail.com'
+# EMAIL_HOST_PASSWORD = 'Amir1383.com'
