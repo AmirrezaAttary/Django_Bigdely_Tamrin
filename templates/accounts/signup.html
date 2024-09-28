@@ -26,7 +26,7 @@
                 <form method="post" action="">
                     {% csrf_token %}
                     
-                    <input type="text" name="username" placeholder="USERNAME" required autofocus />
+                    <input type="text" name="username" placeholder="USERNAME" minlength="5" required autofocus />
                     <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
                     <input type="email" name="email" placeholder="EMAIL" required />
                     <input type="password" name="password1" placeholder="PASSWORD" required />
