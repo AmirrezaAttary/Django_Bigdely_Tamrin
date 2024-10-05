@@ -14,12 +14,25 @@
         <div class="login-container">
             <div class="circle circle-one"></div>
             <div class="form-container">
-                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
-                <h1 class="opacity">LOGIN</h1>
+                <center><h1 class="opacity">LOGIN</h1></center>
                 <form method="post" action="{% url 'accounts:login' %}">
                     {% csrf_token %}
-                    <input type="text" name="username" placeholder="USERNAME" required autofocus />
-                    <input type="password" name="password" placeholder="PASSWORD" required />
+                    {% if messages %}
+                            {% for message in messages %}  
+                            <p>
+                                <label style="color: red;font-size: 23px;">{{ message }}</label> 
+                            </p> 
+                            {% endfor %}  
+                    {% endif %}  
+                    {{form.as_p}}
+                    <!-- <p>
+                        <label for="id_username">USERNAME/EMAIL</label>
+                        <input type="text" name="username" placeholder="USERNAME/EMAIL" required autofocus id="id_username" />
+                    </p>
+                    <p>
+                        <label for="id_password">PASSWORD</label>
+                        <input type="password" name="password" placeholder="PASSWORD" required id="id_password" />
+                    </p> -->
                     <button class="" type="submit">LOGIN</button>
                 </form>
                 <div class="register-forget ">
