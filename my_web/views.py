@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from my_web.models import Contatct
 from my_web.forms import NameForm ,ContatctForm,NewsletterForm

@@ -10,3 +10,4 @@ django-taggit
 django-summernote
 django-simple-captcha
 django-rest-passwordreset
+mysqlclient
