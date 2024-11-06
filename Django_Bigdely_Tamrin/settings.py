@@ -42,10 +42,15 @@ INSTALLED_APPS = [
     'my_web.apps.MyWebConfig',
     'blog.apps.BlogConfig',
     'accounts',
+    "compressor",
     
 ]
-
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
 
 # robots
